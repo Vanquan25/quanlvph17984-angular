@@ -1,0 +1,26 @@
+<div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Avatar</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of teachers">
+          <td>{{teacher.id}}</td>
+          <td>{{teacher.name}}</td>
+          <td>{{teacher.age}}</td>
+          <td>{{teacher.gender ? 'Nam' : 'Nữ'}}</td>
+          <td><img src="{{teacher.avatar}}" alt="" height="100"></td>
+          <td>
+            <span *ngIf="teacher.status === 1" class="color-greenyellow"> Đang làm việc</span>
+            <span *ngIf="teacher.status === 0" class="color-red"> Đã nghỉ</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
