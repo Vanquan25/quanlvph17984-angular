@@ -1,10 +1,82 @@
 <div class="container">
-  <h1>DS Giáo Viên</h1>
+  <h1 (Click)="clickH1">DS Giáo Viên {{schoolName}}</h1>
   <div>
-    <app-table [users]= "teachers"></app-table>
+    <div>
+      <form action="">
+        <input type="text" (keydown)="changeInput($event)" [value]="inputValue">
+        <button>{{inputValue}}</button> 
+      </form>
+    </div>
+    <div>
+      <p>Form đăng kí thông tin giảng viên</p>
+      <form action="">
+          <div>
+            <label for="">Tên GV</label>
+            <input type="text" 
+            class="form-control"
+            (input)="onInput($event, 'name')"
+            [value]="this.inputValues.name"
+            >
+          </div>
+          <div>
+            <label for="">Tuổi GV</label>
+            <input type="number"
+            class="form-control"
+            (input)="onInput($event, 'age')"
+            [value]="this.inputValues.age"
+            >
+          </div>
+          <div>
+            <label for="">Giới tính GV</label>
+            <input type="radio"
+            class="form-check"
+            (input)="onInput($event, 'gender')"
+            [checked]="inputValues.gender === '1'"
+            [value]="1"
+            >Nam
+            <input type="radio"
+            class="form-check"
+            (input)="onInput($event, 'gender')"
+            [checked]="inputValues.gender === '0'"
+            [value]="0"
+            >Nữ
+          </div>
+          <div>
+            <label for="">Avatar GV</label>
+            <input type="text"
+            class="form-control"
+            (input)="onInput($event, 'avatar')"
+            [value]="this.inputValues.avatar"
+            >
+          </div>
+          <div>
+            <label for="">Status GV</label>
+            <input type="radio"
+            class="form-check"
+            (input)="onInput($event, 'status')"
+            [checked]="inputValues.status === '1'"
+            [value]="1"
+            >Đang làm việc
+            <input type="radio"
+            class="form-check"
+            (input)="onInput($event, 'status')"
+            [checked]="inputValues.status === '0'"
+            [value]="0"
+            >Đã nghỉ
+          </div>
+          <div>
+            <button type="button" (click)="onSubmit()" class="btn btn-success">Submit</button>
+          </div>
+      </form>
+    </div>
+    <div>
+    <button
+  class="btn btn-info"
+  (click)="changeTableStatus()"
+  >{{showStatus ? 'Ẩn' : 'Hiện'}} bảng teacher</button>
+</div>
+    <app-table [users]= "teachers" *ngIf="showStatus"></app-table>
   </div>
-
-
     <div>
       Ten SV: <app-name [name]="studentName" class="color-red"></app-name>
       MSV: <app-identity [id]="studentId" class="color-blue"></app-identity>
