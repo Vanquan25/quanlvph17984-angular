@@ -1,0 +1,43 @@
+<form action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group">
+        <label for="">Ten user</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        name="name" [(ngModel)] = 'inputValues.name'
+        required minlength="10"
+        #name="ngModel"
+        >
+        <!-- <span>{{name.dirty | json}}</span> -->
+        <app-show-validate [field]="name" key="Ten"></app-show-validate>
+        
+    </div>
+    <div class="form-group">
+        <label for="">Tuoi user</label>
+        <input 
+        type="number" 
+        class="form-control" 
+        name="age" [(ngModel)] = 'inputValues.age'
+        required min="10" max="100"
+        #age="ngModel"
+        >
+        <app-show-validate [field]="age" key="Tuoi"></app-show-validate>
+    </div>
+    <div class="form-group">
+        <label for="">Email user</label>
+        <input 
+        type="email" 
+        class="form-control" 
+        name="email" [(ngModel)] = 'inputValues.email'
+        required email
+        #email="ngModel"
+        >
+        <app-show-validate [field]="email" key="Email"></app-show-validate>
+    </div>
+    <div>
+        <button 
+        class="btn btn-success"
+        [disabled]="!userForm.valid"
+        >Submit</button>
+    </div>
+</form>

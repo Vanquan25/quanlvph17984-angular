@@ -1,0 +1,29 @@
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Tên</td>
+                <td>Tên</td>
+                <td>Tuổi</td>
+                <td>Email</td>
+                <td>Chuc nang</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button class="btn btn-warning"
+                    (click)="onEdit(user.id)"
+                    >Sửa</button>
+                    <button class="btn btn-danger"
+                    (click)="onDelete(user.id)"
+                    >Xoá</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
